@@ -20,7 +20,8 @@
         "drupal/core-recommended": "^10",
         "pantheon-systems/drupal-integrations": "^10",
         "cweagans/composer-patches": "^1.7",
-        "drush/drush": "^11 || ^12"
+        "drush/drush": "^11 || ^12",
+        "drupal/next": "*"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -31,6 +32,14 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "extra": {
+	"patches": {
+           "drupal/subrequests": {
+              "Get same results on different request": "https://www.drupal.org/files/issues/2019-07-18/change_request_type-63049395-09.patch"
+           },
+           "drupal/decoupled_router": {
+              "Unable to resolve path on node in other language than default": "https://www.drupal.org/files/issues/2022-11-30/decouple_router-3111456-resolve-language-issue-58.patch"
+           }
+    	},
         "drupal-scaffold": {
             "locations": {
                 "web-root": "./web"
@@ -78,7 +87,8 @@
             "cweagans/composer-patches": true,
             "drupal/core-composer-scaffold": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "php-http/discovery": true
         }
     }
 }
