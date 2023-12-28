@@ -21,9 +21,12 @@
         "pantheon-systems/drupal-integrations": "^10",
         "cweagans/composer-patches": "^1.7",
         "drush/drush": "^11 || ^12",
-        "drupal/next": "*",
+        "drupal/next": "^1.6",
         "drupal/admin_toolbar": "*",
-        "drupal/graphql": "*"
+        "drupal/graphql": "*",
+        "drupal/jsonapi_menu_items": "^1.2",
+        "drupal/jsonapi_views": "^1.1",
+        "drupal/jsonapi_resources": "^1.0@beta"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
