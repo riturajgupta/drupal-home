@@ -22,14 +22,16 @@
         "cweagans/composer-patches": "^1.7",
         "drush/drush": "^11 || ^12",
         "drupal/next": "^1.6",
-        "drupal/admin_toolbar": "*",
-        "drupal/graphql": "*",
+	"drupal/graphql": "*",
+	"drupal/admin_toolbar": "*",
         "drupal/jsonapi_menu_items": "^1.2",
         "drupal/jsonapi_views": "^1.1",
         "drupal/jsonapi_resources": "^1.0@beta",
         "drupal/next_preview": "^0.1",
         "drupal/decoupled_preview": "^1.0@beta",
-        "drupal/simple_decoupled_preview": "^2.0"
+        "drupal/simple_decoupled_preview": "^2.0",
+        "drupal/typed_data": "^1.0@beta",
+        "drupal/graphql_compose": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
