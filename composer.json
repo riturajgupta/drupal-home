@@ -32,7 +32,8 @@
         "drupal/simple_decoupled_preview": "^2.0",
         "drupal/typed_data": "^1.0@beta",
         "drupal/graphql_compose": "^2.0",
-        "drupal/graphql_core_schema": "^1.0@beta"
+        "drupal/graphql_core_schema": "^1.0@beta",
+        "drupal/decoupled_router": "^2.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -49,7 +50,11 @@
            },
            "drupal/decoupled_router": {
           
-           }
+           },
+	   "drupal/decoupled_router": {
+	       "working patch": "https://www.drupal.org/files/issues/2023-08-30/decoupled_router-3111456-resolve_lang-66.patch",
+	       "Patching as per the documentation": "https://www.drupal.org/files/issues/2021-05-05/3111456-34.patch"	
+	   }
     	},
         "drupal-scaffold": {
             "locations": {
