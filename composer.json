@@ -8,6 +8,10 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
+	{
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
         {
             "type": "path",
             "url": "upstream-configuration"
@@ -33,7 +37,9 @@
         "drupal/typed_data": "^1.0@beta",
         "drupal/graphql_compose": "^2.0",
         "drupal/graphql_core_schema": "^1.0@beta",
-        "drupal/decoupled_router": "^2.0"
+        "drupal/decoupled_router": "^2.0",
+        "oomphinc/composer-installers-extender": "*",
+        "bower-asset/swagger-ui": "*"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -69,7 +75,7 @@
         },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
@@ -77,7 +83,9 @@
             "web/modules/custom/{$name}": ["type:drupal-custom-module"],
             "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
             "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
-            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"]
+            "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"],
+	    "web/libraries/swagger-ui": ["bower-asset/swagger-ui"],
+	    "installer-types": ["bower-asset", "npm-asset"]
         },
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
@@ -104,7 +112,8 @@
             "drupal/core-composer-scaffold": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "phpstan/extension-installer": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "oomphinc/composer-installers-extender": true
         }
     }
 }
