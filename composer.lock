@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2396c0222672f0b110a81d0cdfca3368",
+    "content-hash": "ffdc61aef0d4a493887e836dfc0f3865",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3079,6 +3079,173 @@
             "homepage": "https://www.drupal.org/project/subrequests",
             "support": {
                 "source": "https://git.drupalcode.org/project/subrequests"
+            }
+        },
+        {
+            "name": "drupal/swagger_ui_formatter",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/swagger_ui_formatter.git",
+                "reference": "4.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/swagger_ui_formatter-4.0.0.zip",
+                "reference": "4.0.0",
+                "shasum": "98c4645c8e67a80977e028a981edb15665197ad6"
+            },
+            "require": {
+                "drupal/core": "^9.4 || ^10.0",
+                "php": "~8.1.0"
+            },
+            "require-dev": {
+                "bower-asset/swagger-ui": "^4.15.0",
+                "composer/installers": "^v2.2.0",
+                "drupal/core-composer-scaffold": "^9.4 || ^10.0.0",
+                "drupal/core-dev": "^9.4 || ^10.0.0",
+                "drupal/core-recommended": "^9.4 || ^10.0.0",
+                "drupal/devel": "^5.1.1",
+                "league/container": "<4.0.0 || >=4.1.1",
+                "pronovix/drupal-qa": "^3.11.1",
+                "pronovix/simple-symlink": "^3.11.1",
+                "zaporylie/composer-drupal-optimizations": "^1.2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "4.0.0",
+                    "datestamp": "1679924718",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                },
+                "composer-exit-on-patch-failure": true,
+                "composer-normalize": {
+                    "indent-size": 4,
+                    "indent-style": "space"
+                },
+                "drupal-scaffold": {
+                    "file-mapping": {
+                        "[libraries]/swagger-ui/dist/oauth2-redirect.html": "build/vendor/bower-asset/swagger-ui/dist/oauth2-redirect.html",
+                        "[libraries]/swagger-ui/dist/swagger-ui-bundle.js": "build/vendor/bower-asset/swagger-ui/dist/swagger-ui-bundle.js",
+                        "[libraries]/swagger-ui/dist/swagger-ui-standalone-preset.js": "build/vendor/bower-asset/swagger-ui/dist/swagger-ui-standalone-preset.js",
+                        "[libraries]/swagger-ui/dist/swagger-ui.css": "build/vendor/bower-asset/swagger-ui/dist/swagger-ui.css",
+                        "[libraries]/swagger-ui/package.json": "build/vendor/bower-asset/swagger-ui/package.json",
+                        "[project-root]/.gitattributes": false
+                    },
+                    "locations": {
+                        "libraries": "build/web/libraries",
+                        "web-root": "build/web"
+                    }
+                },
+                "enable-patching": true,
+                "installer-paths": {
+                    "build/web/core": [
+                        "type:drupal-core"
+                    ],
+                    "build/web/drush/contrib/{$name}": [
+                        "type:drupal-drush"
+                    ],
+                    "build/web/libraries/{$name}": [
+                        "type:drupal-library"
+                    ],
+                    "build/web/modules/contrib/{$name}": [
+                        "type:drupal-module"
+                    ],
+                    "build/web/modules/custom/{$name}": [
+                        "type:drupal-custom-module"
+                    ],
+                    "build/web/profiles/contrib/{$name}": [
+                        "type:drupal-profile"
+                    ],
+                    "build/web/themes/contrib/{$name}": [
+                        "type:drupal-theme"
+                    ],
+                    "build/web/themes/custom/{$name}": [
+                        "type:drupal-custom-theme"
+                    ]
+                },
+                "patchLevel": {
+                    "drupal/core": "-p2"
+                },
+                "patches": {
+                    "mglaman/phpstan-drupal": {
+                        "Exclude build directory from extension discovery [#85]:": "https://github.com/mglaman/phpstan-drupal/pull/85.diff"
+                    }
+                },
+                "simple-symlinks": {
+                    ".": "build/web/modules/drupal_module",
+                    "phpcs.xml.dist": "build/phpcs.xml.dist",
+                    "phpstan-baseline.neon": "build/phpstan-baseline.neon",
+                    "phpstan.neon.dist": "build/phpstan.neon.dist"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Drupal\\swagger_ui_formatter\\": "./src/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Drupal\\Tests\\swagger_ui_formatter\\": "./tests/src",
+                    "Drupal\\swagger_ui_formatter_test\\": "./tests/modules/swagger_ui_formatter_test/src"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "scripts": {
+                "post-install-cmd": [
+                    "Pronovix\\SimpleSymlink\\ScriptHandler::createSymlinks"
+                ],
+                "post-update-cmd": [
+                    "Pronovix\\SimpleSymlink\\ScriptHandler::createSymlinks"
+                ]
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "ajay_reddy",
+                    "homepage": "https://www.drupal.org/user/3261994"
+                },
+                {
+                    "name": "balazswmann",
+                    "homepage": "https://www.drupal.org/user/2204810"
+                },
+                {
+                    "name": "drupal.dinesh",
+                    "homepage": "https://www.drupal.org/user/3378060"
+                },
+                {
+                    "name": "dsudheesh",
+                    "homepage": "https://www.drupal.org/user/956506"
+                },
+                {
+                    "name": "lizlynch",
+                    "homepage": "https://www.drupal.org/user/3569234"
+                },
+                {
+                    "name": "mxr576",
+                    "homepage": "https://www.drupal.org/user/315522"
+                }
+            ],
+            "description": "Provides a Swagger UI field formatter for File and Link fields.",
+            "homepage": "https://www.drupal.org/project/swagger_ui_formatter",
+            "keywords": [
+                "API docs",
+                "Drupal",
+                "OpenAPI",
+                "Swagger"
+            ],
+            "support": {
+                "source": "https://github.com/Pronovix/swagger_ui_formatter",
+                "issues": "https://github.com/Pronovix/swagger_ui_formatter/issues",
+                "docs": "https://www.drupal.org/docs/8/modules/swagger-ui-field-formatter"
             }
         },
         {
