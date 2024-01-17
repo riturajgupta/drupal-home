@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ffdc61aef0d4a493887e836dfc0f3865",
+    "content-hash": "2396c0222672f0b110a81d0cdfca3368",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1194,16 +1194,16 @@
         },
         {
             "name": "doctrine/inflector",
-            "version": "2.0.8",
+            "version": "2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "f9301a5b2fb1216b2b08f02ba04dc45423db6bff"
+                "reference": "2930cd5ef353871c821d5c43ed030d39ac8cfe65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/f9301a5b2fb1216b2b08f02ba04dc45423db6bff",
-                "reference": "f9301a5b2fb1216b2b08f02ba04dc45423db6bff",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/2930cd5ef353871c821d5c43ed030d39ac8cfe65",
+                "reference": "2930cd5ef353871c821d5c43ed030d39ac8cfe65",
                 "shasum": ""
             },
             "require": {
@@ -1265,7 +1265,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/inflector/issues",
-                "source": "https://github.com/doctrine/inflector/tree/2.0.8"
+                "source": "https://github.com/doctrine/inflector/tree/2.0.9"
             },
             "funding": [
                 {
@@ -1281,7 +1281,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-06-16T13:40:37+00:00"
+            "time": "2024-01-15T18:05:13+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -3079,173 +3079,6 @@
             "homepage": "https://www.drupal.org/project/subrequests",
             "support": {
                 "source": "https://git.drupalcode.org/project/subrequests"
-            }
-        },
-        {
-            "name": "drupal/swagger_ui_formatter",
-            "version": "4.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/swagger_ui_formatter.git",
-                "reference": "4.0.0"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/swagger_ui_formatter-4.0.0.zip",
-                "reference": "4.0.0",
-                "shasum": "98c4645c8e67a80977e028a981edb15665197ad6"
-            },
-            "require": {
-                "drupal/core": "^9.4 || ^10.0",
-                "php": "~8.1.0"
-            },
-            "require-dev": {
-                "bower-asset/swagger-ui": "^4.15.0",
-                "composer/installers": "^v2.2.0",
-                "drupal/core-composer-scaffold": "^9.4 || ^10.0.0",
-                "drupal/core-dev": "^9.4 || ^10.0.0",
-                "drupal/core-recommended": "^9.4 || ^10.0.0",
-                "drupal/devel": "^5.1.1",
-                "league/container": "<4.0.0 || >=4.1.1",
-                "pronovix/drupal-qa": "^3.11.1",
-                "pronovix/simple-symlink": "^3.11.1",
-                "zaporylie/composer-drupal-optimizations": "^1.2"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "4.0.0",
-                    "datestamp": "1679924718",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                },
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                },
-                "composer-exit-on-patch-failure": true,
-                "composer-normalize": {
-                    "indent-size": 4,
-                    "indent-style": "space"
-                },
-                "drupal-scaffold": {
-                    "file-mapping": {
-                        "[libraries]/swagger-ui/dist/oauth2-redirect.html": "build/vendor/bower-asset/swagger-ui/dist/oauth2-redirect.html",
-                        "[libraries]/swagger-ui/dist/swagger-ui-bundle.js": "build/vendor/bower-asset/swagger-ui/dist/swagger-ui-bundle.js",
-                        "[libraries]/swagger-ui/dist/swagger-ui-standalone-preset.js": "build/vendor/bower-asset/swagger-ui/dist/swagger-ui-standalone-preset.js",
-                        "[libraries]/swagger-ui/dist/swagger-ui.css": "build/vendor/bower-asset/swagger-ui/dist/swagger-ui.css",
-                        "[libraries]/swagger-ui/package.json": "build/vendor/bower-asset/swagger-ui/package.json",
-                        "[project-root]/.gitattributes": false
-                    },
-                    "locations": {
-                        "libraries": "build/web/libraries",
-                        "web-root": "build/web"
-                    }
-                },
-                "enable-patching": true,
-                "installer-paths": {
-                    "build/web/core": [
-                        "type:drupal-core"
-                    ],
-                    "build/web/drush/contrib/{$name}": [
-                        "type:drupal-drush"
-                    ],
-                    "build/web/libraries/{$name}": [
-                        "type:drupal-library"
-                    ],
-                    "build/web/modules/contrib/{$name}": [
-                        "type:drupal-module"
-                    ],
-                    "build/web/modules/custom/{$name}": [
-                        "type:drupal-custom-module"
-                    ],
-                    "build/web/profiles/contrib/{$name}": [
-                        "type:drupal-profile"
-                    ],
-                    "build/web/themes/contrib/{$name}": [
-                        "type:drupal-theme"
-                    ],
-                    "build/web/themes/custom/{$name}": [
-                        "type:drupal-custom-theme"
-                    ]
-                },
-                "patchLevel": {
-                    "drupal/core": "-p2"
-                },
-                "patches": {
-                    "mglaman/phpstan-drupal": {
-                        "Exclude build directory from extension discovery [#85]:": "https://github.com/mglaman/phpstan-drupal/pull/85.diff"
-                    }
-                },
-                "simple-symlinks": {
-                    ".": "build/web/modules/drupal_module",
-                    "phpcs.xml.dist": "build/phpcs.xml.dist",
-                    "phpstan-baseline.neon": "build/phpstan-baseline.neon",
-                    "phpstan.neon.dist": "build/phpstan.neon.dist"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Drupal\\swagger_ui_formatter\\": "./src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Drupal\\Tests\\swagger_ui_formatter\\": "./tests/src",
-                    "Drupal\\swagger_ui_formatter_test\\": "./tests/modules/swagger_ui_formatter_test/src"
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "scripts": {
-                "post-install-cmd": [
-                    "Pronovix\\SimpleSymlink\\ScriptHandler::createSymlinks"
-                ],
-                "post-update-cmd": [
-                    "Pronovix\\SimpleSymlink\\ScriptHandler::createSymlinks"
-                ]
-            },
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "ajay_reddy",
-                    "homepage": "https://www.drupal.org/user/3261994"
-                },
-                {
-                    "name": "balazswmann",
-                    "homepage": "https://www.drupal.org/user/2204810"
-                },
-                {
-                    "name": "drupal.dinesh",
-                    "homepage": "https://www.drupal.org/user/3378060"
-                },
-                {
-                    "name": "dsudheesh",
-                    "homepage": "https://www.drupal.org/user/956506"
-                },
-                {
-                    "name": "lizlynch",
-                    "homepage": "https://www.drupal.org/user/3569234"
-                },
-                {
-                    "name": "mxr576",
-                    "homepage": "https://www.drupal.org/user/315522"
-                }
-            ],
-            "description": "Provides a Swagger UI field formatter for File and Link fields.",
-            "homepage": "https://www.drupal.org/project/swagger_ui_formatter",
-            "keywords": [
-                "API docs",
-                "Drupal",
-                "OpenAPI",
-                "Swagger"
-            ],
-            "support": {
-                "source": "https://github.com/Pronovix/swagger_ui_formatter",
-                "issues": "https://github.com/Pronovix/swagger_ui_formatter/issues",
-                "docs": "https://www.drupal.org/docs/8/modules/swagger-ui-field-formatter"
             }
         },
         {
@@ -10221,21 +10054,21 @@
         },
         {
             "name": "mglaman/phpstan-drupal",
-            "version": "1.2.5",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mglaman/phpstan-drupal.git",
-                "reference": "a5a001a71b3b7ba99d552fc9490d31e0cc27422b"
+                "reference": "ba8678f8cbea42cc41022c21751004eb677cf5a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/a5a001a71b3b7ba99d552fc9490d31e0cc27422b",
-                "reference": "a5a001a71b3b7ba99d552fc9490d31e0cc27422b",
+                "url": "https://api.github.com/repos/mglaman/phpstan-drupal/zipball/ba8678f8cbea42cc41022c21751004eb677cf5a4",
+                "reference": "ba8678f8cbea42cc41022c21751004eb677cf5a4",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.4 || ^8.0",
-                "phpstan/phpstan": "^1.10.1",
+                "phpstan/phpstan": "^1.10.56",
                 "phpstan/phpstan-deprecation-rules": "^1.1.4",
                 "symfony/finder": "^4.2 || ^5.0 || ^6.0 || ^7.0",
                 "symfony/yaml": "^4.2|| ^5.0 || ^6.0 || ^7.0",
@@ -10305,7 +10138,7 @@
             "description": "Drupal extension and rules for PHPStan",
             "support": {
                 "issues": "https://github.com/mglaman/phpstan-drupal/issues",
-                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.2.5"
+                "source": "https://github.com/mglaman/phpstan-drupal/tree/1.2.6"
             },
             "funding": [
                 {
@@ -10321,7 +10154,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-10T16:56:53+00:00"
+            "time": "2024-01-16T00:42:10+00:00"
         },
         {
             "name": "micheh/phpcs-gitlab",
@@ -11622,16 +11455,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.55",
+            "version": "1.10.56",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "9a88f9d18ddf4cf54c922fbeac16c4cb164c5949"
+                "reference": "27816a01aea996191ee14d010f325434c0ee76fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9a88f9d18ddf4cf54c922fbeac16c4cb164c5949",
-                "reference": "9a88f9d18ddf4cf54c922fbeac16c4cb164c5949",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/27816a01aea996191ee14d010f325434c0ee76fa",
+                "reference": "27816a01aea996191ee14d010f325434c0ee76fa",
                 "shasum": ""
             },
             "require": {
@@ -11680,7 +11513,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-08T12:32:40+00:00"
+            "time": "2024-01-15T10:43:00+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",

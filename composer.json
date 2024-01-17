@@ -40,8 +40,7 @@
         "drupal/decoupled_router": "^2.0",
         "oomphinc/composer-installers-extender": "*",
         "bower-asset/swagger-ui": "*",
-        "mnsami/composer-custom-directory-installer": "*",
-        "drupal/swagger_ui_formatter": "^4.0"
+        "mnsami/composer-custom-directory-installer": "*"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
