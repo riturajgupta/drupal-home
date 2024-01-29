@@ -1,0 +1,8 @@
+mtn_apis.api_login:
+  path: '/api/v1/login'
+  defaults:
+    _controller: '\Drupal\mtn_apis\Controller\CustomLoginController::login'
+    _title: 'Custom API Login'
+  methods:  [POST]
+  requirements:
+    _permission: 'access content'

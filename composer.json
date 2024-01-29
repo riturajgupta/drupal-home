@@ -55,9 +55,7 @@
            "drupal/subrequests": {
               "Get same results on different request": "https://www.drupal.org/files/issues/2019-07-18/change_request_type-63049395-09.patch"
            },
-           "drupal/decoupled_router": {
-          
-           },
+           
 	   "drupal/decoupled_router": {
 	       "working patch": "https://www.drupal.org/files/issues/2023-08-30/decoupled_router-3111456-resolve_lang-66.patch",
 	       "Patching as per the documentation": "https://www.drupal.org/files/issues/2021-05-05/3111456-34.patch"	
@@ -76,7 +74,7 @@
         },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
+            "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset", "swagger-api/swagger-ui", "type:drupal-library"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
@@ -86,8 +84,7 @@
             "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
             "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"],
 	    "web/libraries/swagger-ui": ["bower-asset/swagger-ui"],
-	    "installer-types": ["bower-asset", "npm-asset"],
-	    "web/libraries/{$name}": ["swagger-api/swagger-ui", "type:drupal-library"]
+	    "installer-types": ["bower-asset", "npm-asset"]
         },
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
