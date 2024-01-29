@@ -84,7 +84,7 @@
             "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
             "web/private/scripts/quicksilver/{$name}/": ["type:quicksilver-script"],
 	    "web/libraries/swagger-ui": ["bower-asset/swagger-ui"],
-	    "installer-types": ["bower-asset", "npm-asset"]
+	    "installer-types": ["bower-asset", "npm-asset"] 
         },
         "composer-exit-on-patch-failure": true,
         "patchLevel": {

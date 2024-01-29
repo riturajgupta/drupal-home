@@ -5,4 +5,4 @@ mtn_apis.api_login:
     _title: 'Custom API Login'
   methods:  [POST]
   requirements:
-    _permission: 'access content'
+    _permission: 'access content' 

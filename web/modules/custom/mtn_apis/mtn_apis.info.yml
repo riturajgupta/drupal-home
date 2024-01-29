@@ -2,4 +2,4 @@ name: Custom Login
 type: module
 description: Provides custom login APIs.
 core_version_requirement: ^10
-package: MTN
+package: MTN 
