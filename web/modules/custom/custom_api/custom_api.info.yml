@@ -1,0 +1,5 @@
+name: Custom Content
+type: module
+description: Provides custom content APIs.
+core_version_requirement: ^10
+package: MTN 
