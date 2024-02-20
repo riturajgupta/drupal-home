@@ -41,7 +41,7 @@
         "oomphinc/composer-installers-extender": "*",
         "bower-asset/swagger-ui": "*",
         "mnsami/composer-custom-directory-installer": "*" ,
-        "drupal/video" : "^3.0" 
+        "drupal/video" : "^3.0"
     },
     "require-dev": {
         "drupal/core-dev": "^10"
@@ -58,8 +58,7 @@
            },
            
 	   "drupal/decoupled_router": {
-	       "working patch": "https://www.drupal.org/files/issues/2023-08-30/decoupled_router-3111456-resolve_lang-66.patch",
-	       "Patching as per the documentation": "https://www.drupal.org/files/issues/2021-05-05/3111456-34.patch"	
+	       "working patch": "https://www.drupal.org/files/issues/2023-08-30/decoupled_router-3111456-resolve_lang-66.patch"
 	   }
     	},
         "drupal-scaffold": {
