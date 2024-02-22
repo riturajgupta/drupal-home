@@ -1,0 +1,5 @@
+services:
+  custom_api.custom_rest_resource_subscriber:
+    class: Drupal\custom_api\EventSubscriber\CustomRestResourceSubscriber
+    tags:
+      - { name: event_subscriber }
