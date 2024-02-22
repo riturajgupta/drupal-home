@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * Implements hook_rest_resource_alter().
+ */
+function custom_api_rest_resource_alter(array &$resource_routes, array $resource_name) {
+    // Check if the resource is the node entity.
+    echo "<pre>";
+    print_r($resource_name[0]);
+    die('----hi----');
+    if ($resource_name[0] == 'entity:node') {
+        // Alter the GET method callback.
+        if (isset($resource_routes['get'])) {
+            $resource_routes['get']['callbacks'][] = '_custom_node_get';
+        }
+    }
+}
+
+/**
+ * Custom callback for GET method of the node entity.
+ */
+function _custom_node_get() {
+    // Custom logic here.
+}

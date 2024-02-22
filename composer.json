@@ -24,7 +24,7 @@
         "drupal/core-recommended": "^10",
         "pantheon-systems/drupal-integrations": "^10",
         "cweagans/composer-patches": "^1.7",
-        "drush/drush": "^11 || ^12",
+        "drush/drush": "^12.4",
         "drupal/next": "^1.6",
 	"drupal/graphql": "*",
 	"drupal/admin_toolbar": "*",
