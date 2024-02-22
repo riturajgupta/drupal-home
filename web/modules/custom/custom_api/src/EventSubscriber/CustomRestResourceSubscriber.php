@@ -18,6 +18,9 @@ class CustomRestResourceSubscriber implements EventSubscriberInterface {
     $response = $event->getResponse();
 
     // Check if the request corresponds to the desired REST resource.
+    echo "<pre>";
+    print_r($request->attributes->get('_route'));
+    die('----a----');
     if ($request->attributes->get('_route') == 'entity.node.canonical') {
       // Modify the response content as needed.
       $content = $response->getContent();
