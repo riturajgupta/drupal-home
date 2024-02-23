@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class CustomApiController extends ControllerBase {
   protected $entityTypeManager;
@@ -82,5 +83,31 @@ class CustomApiController extends ControllerBase {
     // Return JSON response.
     return new JsonResponse($node_data);
   }
-}
 
+  /**
+  * Callback function to create a node.
+  */
+  function app_submit(Request $request) {
+    // Get JSON data from the request body.
+    $data = json_decode($request->getContent(), TRUE);
+
+    if (empty($data['title'])) {
+      return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
+    }
+
+    // Create a node entity.
+    $node = Node::create([
+      'type' => 'article', // create a node of 'article' content type.
+      'title' => $data['title'],
+      'body' => $data['body'],
+      // Add more fields as needed.
+    ]);
+    $node->save();
+
+    // Return the ID of the created node.
+    return new Response($node->id(), Response::HTTP_CREATED);
+
+
+  }
+
+}
