@@ -90,7 +90,9 @@ class CustomApiController extends ControllerBase {
   function app_submit(Request $request) {
     // Get JSON data from the request body.
     $data = json_decode($request->getContent(), TRUE);
-
+    echo "<pre>";
+    print_r($data);
+    die('----d-----');
     if (empty($data['title'])) {
       return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
     }
