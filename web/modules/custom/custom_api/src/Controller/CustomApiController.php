@@ -98,7 +98,7 @@ class CustomApiController extends ControllerBase {
     }
 
     // Create a new file object
-    $file = File::create([
+    /*$file = File::create([
       'uri' => 'public://'.$data['image'],
       'status' => 1,
     ]);
@@ -130,7 +130,7 @@ class CustomApiController extends ControllerBase {
       'target_id' => $file->id(),
     ]);
 
-    $node->save();
+    $node->save();*/
 
     // Return the ID of the created node.
     return new Response($node->id(), Response::HTTP_CREATED);
