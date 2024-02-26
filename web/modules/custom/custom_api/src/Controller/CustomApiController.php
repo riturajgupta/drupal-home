@@ -118,13 +118,13 @@ class CustomApiController extends ControllerBase {
       // Save the file to the Drupal file system.
       $fileContents = file_get_contents($temporaryFilepath);
       //$file = file_save_data($fileContents, 'public://' . $fileName, FILE_EXISTS_REPLACE);
-      $file = \Drupal::service('file.repository')->writeData($fileContents, 'public://$fileName');
+      $file = \Drupal::service('file.repository')->writeData($fileContents, 'public://'.$fileName);
 
       $fileEntity = $entityTypeManager->getStorage('file')->load($file->id());
 
     }
-    echo $fileEntity->id()."===========";
-    kint($fileEntity);
+    // echo $fileEntity->id()."===========";
+    // kint($fileEntity);
     
 
     $term = Term::create([
@@ -133,8 +133,8 @@ class CustomApiController extends ControllerBase {
       'vid' => 'front_apps',
     ]);
     $term->save();
-    echo "-----".$term->id();
-    die('======x====');
+    // echo "-----".$term->id();
+    // die('======x====');
 
     // Create a node entity.
     $node = Node::create([
@@ -152,19 +152,15 @@ class CustomApiController extends ControllerBase {
       // Add more fields as needed.
     ]);
 
-    $node->set('field_tags', [
-       'target_id' => $term->id()
-    ]);
-
     $node->save();
 
     // Clean up temporary file.
     file_delete($temporaryFilepath);
 
-    echo "<pre>";
-    kint($file);
-    \Kint::dump($term);
-    die('----d-----');
+    // echo "<pre>";
+    // kint($file);
+    // \Kint::dump($term);
+    // die('----d-----');
 
     // Return the ID of the created node.
     return new Response($node->id(), Response::HTTP_CREATED);
