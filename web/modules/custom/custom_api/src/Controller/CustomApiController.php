@@ -8,6 +8,8 @@ use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use Drupal\file\Entity\File;
+use \Drupal\taxonomy\Entity\Term;
 
 class CustomApiController extends ControllerBase {
   protected $entityTypeManager;
@@ -90,20 +92,44 @@ class CustomApiController extends ControllerBase {
   function app_submit(Request $request) {
     // Get JSON data from the request body.
     $data = json_decode($request->getContent(), TRUE);
-    echo "<pre>";
-    print_r($data);
-    die('----d-----');
+    
     if (empty($data['title'])) {
       return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
     }
+
+    // Create a new file object
+    $file = File::create([
+      'uri' => 'public://'.$data['image'],
+      'status' => 1,
+    ]);
+    $file->save();
+
+    $term = Term::create([
+      'name' => $data['tags'],
+      'vid' => 'front_apps',
+    ]);
+    $term->save();
+
+    echo "<pre>";
+    print_r($file);
+    print_r($term);
+    die('----d-----');
 
     // Create a node entity.
     $node = Node::create([
       'type' => 'article', // create a node of 'article' content type.
       'title' => $data['title'],
       'body' => $data['body'],
+      'uid' => $data['uid'],
+
       // Add more fields as needed.
     ]);
+
+    // add file object to the node object
+    $node->set('field_media_image', [
+      'target_id' => $file->id(),
+    ]);
+
     $node->save();
 
     // Return the ID of the created node.
