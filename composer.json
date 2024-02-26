@@ -111,5 +111,8 @@
             "mnsami/composer-custom-directory-installer": true,
             "drupal/core-project-message": true
         }
+    },
+    "require-dev": {
+        "kint-php/kint": "^5.1"
     }
 }
