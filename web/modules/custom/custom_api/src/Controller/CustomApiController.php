@@ -98,14 +98,30 @@ class CustomApiController extends ControllerBase {
     if (empty($data['title'])) {
       //return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
     }
-    $image = 'https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-mountain-scenery-with-flowers-free-photo.jpg';
+    // Load necessary Drupal services.
+    $entityTypeManager = \Drupal::entityTypeManager();
+    $fileSystem = \Drupal::service('file_system');
+
+    $imageUrl = 'https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-mountain-scenery-with-flowers-free-photo.jpg';
     // Create a new file object
-    $file = File::create([
-      //'uri' => 'public://'.$data['image'],
-      'uri' => 'public://'.$image,
-      'status' => 1,
-    ]);
-    $file->save();
+    // Create a file name for the downloaded image.
+    $fileName = basename($imageUrl);
+
+    // Download the image file.
+    $imageData = file_get_contents($imageUrl);
+    if ($imageData !== FALSE) {
+      // Save the image data to a temporary file.
+      $temporaryDirectory = \Drupal::service('file_system')->getTempDirectory();
+      $temporaryFilepath = $temporaryDirectory . '/' . $fileName;
+      file_put_contents($temporaryFilepath, $imageData);
+
+      // Save the file to the Drupal file system.
+      $fileContents = file_get_contents($temporaryFilepath);
+      $file = file_save_data($fileContents, 'public://' . $fileName, FILE_EXISTS_REPLACE);
+
+      $fileEntity = $entityTypeManager->getStorage('file')->load($file->id());
+
+    }
 
     $term = Term::create([
       //'name' => $data['tags'],
@@ -114,10 +130,7 @@ class CustomApiController extends ControllerBase {
     ]);
     $term->save();
 
-    echo "<pre>";
-    kint($file);
-    \Kint::dump($term);
-    die('----d-----');
+   
 
     // Create a node entity.
     $node = Node::create([
@@ -125,16 +138,29 @@ class CustomApiController extends ControllerBase {
       'title' => $data['title'],
       'body' => $data['body'],
       'uid' => $data['uid'],
-
+      'field_media_image' => [
+        'target_id' => $fileEntity->id(),
+        'alt' => 'Image Alt Text'
+      ],
+      'field_tags', [
+        'target_id' => $term->id()
+      ]
       // Add more fields as needed.
     ]);
 
-    // add file object to the node object
-    $node->set('field_media_image', [
-      'target_id' => $file->id(),
+    $node->set('field_tags', [
+       'target_id' => $term->id()
     ]);
 
     $node->save();
+
+    // Clean up temporary file.
+    file_delete($temporaryFilepath);
+
+    echo "<pre>";
+    kint($file);
+    \Kint::dump($term);
+    die('----d-----');
 
     // Return the ID of the created node.
     return new Response($node->id(), Response::HTTP_CREATED);
