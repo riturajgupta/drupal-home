@@ -117,11 +117,15 @@ class CustomApiController extends ControllerBase {
 
       // Save the file to the Drupal file system.
       $fileContents = file_get_contents($temporaryFilepath);
-      $file = file_save_data($fileContents, 'public://' . $fileName, FILE_EXISTS_REPLACE);
+      //$file = file_save_data($fileContents, 'public://' . $fileName, FILE_EXISTS_REPLACE);
+      $file = \Drupal::service('file.repository')->writeData($fileContents, 'public://$fileName');
 
       $fileEntity = $entityTypeManager->getStorage('file')->load($file->id());
 
     }
+    echo $fileEntity->id()."===========";
+    kint($fileEntity);
+    
 
     $term = Term::create([
       //'name' => $data['tags'],
@@ -129,15 +133,15 @@ class CustomApiController extends ControllerBase {
       'vid' => 'front_apps',
     ]);
     $term->save();
-
-   
+    echo "-----".$term->id();
+    die('======x====');
 
     // Create a node entity.
     $node = Node::create([
       'type' => 'article', // create a node of 'article' content type.
-      'title' => $data['title'],
-      'body' => $data['body'],
-      'uid' => $data['uid'],
+      'title' => 'title11',
+      'body' => 'this is demo 11',
+      'uid' => 9,
       'field_media_image' => [
         'target_id' => $fileEntity->id(),
         'alt' => 'Image Alt Text'
