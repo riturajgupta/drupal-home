@@ -109,7 +109,7 @@ class CustomApiController extends ControllerBase {
 
     $term = Term::create([
       //'name' => $data['tags'],
-      'name' => 'term11',
+      'name' => 'term11', 
       'vid' => 'front_apps',
     ]);
     $term->save();
