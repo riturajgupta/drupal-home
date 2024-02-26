@@ -10,6 +10,8 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Drupal\file\Entity\File;
 use \Drupal\taxonomy\Entity\Term;
+use Drupal\kint\Kint;
+use Drupal\devel;
 
 class CustomApiController extends ControllerBase {
   protected $entityTypeManager;
@@ -94,18 +96,20 @@ class CustomApiController extends ControllerBase {
     $data = json_decode($request->getContent(), TRUE);
     
     if (empty($data['title'])) {
-      return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
+      //return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
     }
-
+    $image = 'https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-mountain-scenery-with-flowers-free-photo.jpg';
     // Create a new file object
     $file = File::create([
-      'uri' => 'public://'.$data['image'],
+      //'uri' => 'public://'.$data['image'],
+      'uri' => 'public://'.$image,
       'status' => 1,
     ]);
     $file->save();
 
     $term = Term::create([
-      'name' => $data['tags'],
+      //'name' => $data['tags'],
+      'name' => 'term11',
       'vid' => 'front_apps',
     ]);
     $term->save();
