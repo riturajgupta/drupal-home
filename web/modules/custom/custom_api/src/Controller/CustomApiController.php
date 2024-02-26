@@ -138,7 +138,7 @@ class CustomApiController extends ControllerBase {
 
     // Create a node entity.
     $node = Node::create([
-      'type' => 'article', // create a node of 'article' content type.
+      'type' => 'front_apps', // create a node of 'front apps' content type.
       'title' => 'title11',
       'body' => 'this is demo 11',
       'uid' => 9,
@@ -155,7 +155,7 @@ class CustomApiController extends ControllerBase {
     $node->save();
 
     // Clean up temporary file.
-    file_delete($temporaryFilepath);
+    //file_delete($temporaryFilepath);
 
     // echo "<pre>";
     // kint($file);
