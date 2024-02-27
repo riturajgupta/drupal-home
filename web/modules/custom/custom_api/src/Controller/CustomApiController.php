@@ -174,9 +174,8 @@ class CustomApiController extends ControllerBase {
     // Return the ID of the created node.
     if($node->id()){
       $nodeData = [
-        'status' => 200,
-        'id' => $node->id(),
-        'response' => Response::HTTP_CREATED
+        'node_nid' => $node->id(),
+        'status' => Response::HTTP_CREATED
       ];  
       // Return JSON response.
       return new JsonResponse($nodeData);       
