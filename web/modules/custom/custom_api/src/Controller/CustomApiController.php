@@ -105,18 +105,18 @@ class CustomApiController extends ControllerBase {
 
 
 
-    $termStorage = $entityTypeManager->getStorage('taxonomy_term');
-    $query = $termStorage->getQuery()
-      ->condition('vid', 'front_apps')
-      ->condition('name', 'term11')
-      ->range(0, 1);
-    $tids = $query->execute();
-    if($tids){
-       echo $tids.'==';
+    $termStorage = $entityTypeManager->getStorage('taxonomy_term')
+                                    ->loadByProperties(['vid' => 'front_apps', 'name' => 'term11']);
+    
+    if($termStorage){
+       print_r($termStorage).'==';
     } else {
       echo "need to create new term";
     }
     die('-----------------');
+
+
+
 
 
     $imageUrl = $data['image'];
