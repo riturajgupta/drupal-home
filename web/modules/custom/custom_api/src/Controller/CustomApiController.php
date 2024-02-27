@@ -97,13 +97,28 @@ class CustomApiController extends ControllerBase {
     $data = json_decode($request->getContent(), TRUE);
     
     if (empty($data['title'])) {
-      return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
+      //return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
     }
     // Load necessary Drupal services.
     $entityTypeManager = \Drupal::entityTypeManager();
     $fileSystem = \Drupal::service('file_system');
 
-    //$imageUrl = 'https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-mountain-scenery-with-flowers-free-photo.jpg';
+
+
+    $termStorage = $entityTypeManager->getStorage('taxonomy_term');
+    $query = $termStorage->getQuery()
+      ->condition('vid', 'front_apps')
+      ->condition('name', 'term11')
+      ->range(0, 1);
+    $tids = $query->execute();
+    if($tids){
+       echo $tids.'==';
+    } else {
+      echo "need to create new term";
+    }
+    die('-----------------');
+
+
     $imageUrl = $data['image'];
     // Create a new file object
     // Create a file name for the downloaded image.
@@ -131,12 +146,12 @@ class CustomApiController extends ControllerBase {
       'field_media_image' => [
         'target_id' => $fileEntity->id(), // ID of the image file.
       ],
-      // You can set other fields of the media entity here if needed.
     ]);
 
     // Save the media entity.
     $media->save(); 
    
+    // Create a new taxonomy term
     $term = Term::create([
       //'name' => $data['tags'],
       'name' => $data['tags'], 
@@ -152,21 +167,29 @@ class CustomApiController extends ControllerBase {
       'field_domain_name' => $data['domain'],
       'field_enable_app' => $data['enable'],
       'field_unique_code' => $data['unique_code'],
-      'uid' => 9
+      'uid' => $data['uid']
       // Add more fields as needed.
     ]);
     $node->field_media_image->target_id = $media->id();
     $node->field_tags->target_id = $term->id();
-    // kint::dump($node);
-    // die('---');
     $node->save();
 
     // Clean up temporary file.
     unlink($temporaryFilepath); 
 
     // Return the ID of the created node.
-    return new Response($node->id(), Response::HTTP_CREATED);
-
+    if($node->id()){
+      $nodeData = [
+        'status' => 200,
+        'id' => $node->id(),
+        'response' => Response::HTTP_CREATED
+      ];  
+      // Return JSON response.
+      return new JsonResponse($nodeData);       
+    } else {
+      // Return error message if node is not created.
+      return new JsonResponse(['error' => 'Node is not created.'], 400);
+    }
 
   }
 
