@@ -12,6 +12,7 @@ use Drupal\file\Entity\File;
 use \Drupal\taxonomy\Entity\Term;
 use Drupal\kint\Kint;
 use Drupal\devel;
+use Drupal\media\Entity\Media;
 
 class CustomApiController extends ControllerBase {
   protected $entityTypeManager;
@@ -124,7 +125,20 @@ class CustomApiController extends ControllerBase {
 
     }
      echo $fileEntity->id()."===========";
-     die;
+     
+    // Load or create the media entity.
+    $media = Media::create([
+      'bundle' => 'image', // Media bundle (e.g., 'image' for an image media type).
+      'name' => $fileName, // Media entity name.
+      'field_media_image' => [
+        'target_id' => $fileEntity->id(), // ID of the image file.
+      ],
+      // You can set other fields of the media entity here if needed.
+    ]);
+    // Save the media entity.
+    $media->save(); 
+    echo ">>>>>>>>>>>>".$media->id();
+    die;
     // kint($fileEntity);
     
 
@@ -133,9 +147,7 @@ class CustomApiController extends ControllerBase {
       'name' => 'term11', 
       'vid' => 'front_apps',
     ]);
-    $term->save();
-    // echo "-----".$term->id();
-    // die('======x====');
+    $term->save(); 
 
     // Create a node entity.
     $node = Node::create([
@@ -145,7 +157,7 @@ class CustomApiController extends ControllerBase {
       'uid' => 9
       // Add more fields as needed.
     ]);
-    $node->field_media_image->target_id = $fileEntity->id();
+    $node->field_media_image->target_id = $media->id();
     $node->field_tags->target_id = $term->id();
 
     $node->save();
