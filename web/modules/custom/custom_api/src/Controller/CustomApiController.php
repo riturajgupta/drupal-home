@@ -149,8 +149,8 @@ class CustomApiController extends ControllerBase {
       'type' => 'front_apps', // create a node of 'front apps' content type.
       'title' => $data['title'],
       'body' => $data['body'],
-      'field_domain' => $data['domain'],
-      'field_enable' => $data['enable'],
+      'field_domain_name' => $data['domain'],
+      'field_enable_app' => $data['enable'],
       'field_unique_code' => $data['unique_code'],
       'uid' => 9
       // Add more fields as needed.
