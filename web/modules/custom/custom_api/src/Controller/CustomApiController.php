@@ -141,23 +141,16 @@ class CustomApiController extends ControllerBase {
       'type' => 'front_apps', // create a node of 'front apps' content type.
       'title' => 'title11',
       'body' => 'this is demo 11',
-      'uid' => 9,
-      'field_media_image' => [
-        'target_id' => $fileEntity->id(),
-        'alt' => 'Image Alt Text',
-        'target_type' => 'media'
-      ],
-      'field_tags', [
-        'target_id' => $term->id(),
-        'target_type' => 'taxonomy_term',
-      ]
+      'uid' => 9
       // Add more fields as needed.
     ]);
+    $node->field_media_image->target_id = $fileEntity->id();
+    $node->field_tags->target_id = $term->id();
 
     $node->save();
 
     // Clean up temporary file.
-    //file_delete($temporaryFilepath);
+    unlink($temporaryFilepath);
 
     // echo "<pre>";
     // kint($file);
