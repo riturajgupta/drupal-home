@@ -135,13 +135,10 @@ class CustomApiController extends ControllerBase {
       ],
       // You can set other fields of the media entity here if needed.
     ]);
+
     // Save the media entity.
     $media->save(); 
-    echo ">>>>>>>>>>>>".$media->id();
-    die;
-    // kint($fileEntity);
-    
-
+   
     $term = Term::create([
       //'name' => $data['tags'],
       'name' => 'term11', 
@@ -163,12 +160,7 @@ class CustomApiController extends ControllerBase {
     $node->save();
 
     // Clean up temporary file.
-    unlink($temporaryFilepath);
-
-    // echo "<pre>";
-    // kint($file);
-    // \Kint::dump($term);
-    // die('----d-----');
+    unlink($temporaryFilepath); 
 
     // Return the ID of the created node.
     return new Response($node->id(), Response::HTTP_CREATED);
