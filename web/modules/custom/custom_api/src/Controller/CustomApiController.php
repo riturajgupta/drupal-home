@@ -103,23 +103,7 @@ class CustomApiController extends ControllerBase {
     // Load necessary Drupal services.
     $entityTypeManager = \Drupal::entityTypeManager();
     $fileSystem = \Drupal::service('file_system');
-
-
-
-
-    // Check if the term does exist, else create.
-    $termStorage = $entityTypeManager->getStorage('taxonomy_term')
-                                    ->loadByProperties(['vid' => 'front_apps', 'name' => 'term11']);
-    if(!empty($termStorage)) {
-      $term = reset($termStorage);
-      echo $term->id();
-    }
-    die('-----------------');
-
-
-
-
-    
+  
     $imageUrl = $data['image'];
     // Create a new file object
     // Create a file name for the downloaded image.
@@ -156,7 +140,8 @@ class CustomApiController extends ControllerBase {
     $termStorage = $entityTypeManager->getStorage('taxonomy_term')
                                     ->loadByProperties(['vid' => 'front_apps', 'name' => $data['tags']]);
     if(!empty($termStorage)) {
-
+      $term = reset($termStorage);
+      $term_id = $term->id();
     }
     else {
       // Create a new taxonomy term
