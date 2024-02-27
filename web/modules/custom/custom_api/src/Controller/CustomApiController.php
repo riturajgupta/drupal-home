@@ -109,7 +109,7 @@ class CustomApiController extends ControllerBase {
 
     // Check if the term does exist, else create.
     $termStorage = $entityTypeManager->getStorage('taxonomy_term')
-                                    ->loadByProperties(['vid' => 'front_apps', 'name' => $data['tags']]);
+                                    ->loadByProperties(['vid' => 'front_apps', 'name' => 'term11']);
     if(!empty($termStorage)) {
       echo $termStorage->id();
     }
