@@ -97,7 +97,7 @@ class CustomApiController extends ControllerBase {
     $data = json_decode($request->getContent(), TRUE);
     
     if (empty($data['title'])) {
-      //return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
+      return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
     }
 
     // Load necessary Drupal services.
