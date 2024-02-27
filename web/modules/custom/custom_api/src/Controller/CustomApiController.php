@@ -157,8 +157,8 @@ class CustomApiController extends ControllerBase {
     ]);
     $node->field_media_image->target_id = $media->id();
     $node->field_tags->target_id = $term->id();
-    kint($node);
-    die('---');
+    // kint::dump($node);
+    // die('---');
     $node->save();
 
     // Clean up temporary file.
