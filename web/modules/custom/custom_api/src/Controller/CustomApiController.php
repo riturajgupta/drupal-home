@@ -144,10 +144,12 @@ class CustomApiController extends ControllerBase {
       'uid' => 9,
       'field_media_image' => [
         'target_id' => $fileEntity->id(),
-        'alt' => 'Image Alt Text'
+        'alt' => 'Image Alt Text',
+        'target_type' => 'media'
       ],
       'field_tags', [
-        'target_id' => $term->id()
+        'target_id' => $term->id(),
+        'target_type' => 'taxonomy_term',
       ]
       // Add more fields as needed.
     ]);
