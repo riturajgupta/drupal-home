@@ -99,26 +99,26 @@ class CustomApiController extends ControllerBase {
     if (empty($data['title'])) {
       //return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
     }
+
     // Load necessary Drupal services.
     $entityTypeManager = \Drupal::entityTypeManager();
     $fileSystem = \Drupal::service('file_system');
 
 
 
+
+    // Check if the term does exist, else create.
     $termStorage = $entityTypeManager->getStorage('taxonomy_term')
-                                    ->loadByProperties(['vid' => 'front_apps', 'name' => 'term11']);
-    
-    if($termStorage){
-       print_r($termStorage).'==';
-    } else {
-      echo "need to create new term";
+                                    ->loadByProperties(['vid' => 'front_apps', 'name' => $data['tags']]);
+    if(!empty($termStorage)) {
+      echo $termStorage->id();
     }
     die('-----------------');
 
 
 
 
-
+    
     $imageUrl = $data['image'];
     // Create a new file object
     // Create a file name for the downloaded image.
@@ -150,14 +150,22 @@ class CustomApiController extends ControllerBase {
 
     // Save the media entity.
     $media->save(); 
-   
-    // Create a new taxonomy term
-    $term = Term::create([
-      //'name' => $data['tags'],
-      'name' => $data['tags'], 
-      'vid' => 'front_apps',
-    ]);
-    $term->save(); 
+    
+    // Check if the term does exist, else create.
+    $termStorage = $entityTypeManager->getStorage('taxonomy_term')
+                                    ->loadByProperties(['vid' => 'front_apps', 'name' => $data['tags']]);
+    if(!empty($termStorage)) {
+
+    }
+    else {
+      // Create a new taxonomy term
+      $term = Term::create([
+        'name' => $data['tags'], 
+        'vid' => 'front_apps',
+      ]);
+      $term->save(); 
+      $term_id = $term->id();
+    }    
 
     // Create a node entity.
     $node = Node::create([
@@ -171,7 +179,7 @@ class CustomApiController extends ControllerBase {
       // Add more fields as needed.
     ]);
     $node->field_media_image->target_id = $media->id();
-    $node->field_tags->target_id = $term->id();
+    $node->field_tags->target_id = $term_id;
     $node->save();
 
     // Clean up temporary file.
