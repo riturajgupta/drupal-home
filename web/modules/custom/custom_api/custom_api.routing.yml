@@ -17,7 +17,7 @@ custom_api.content_type_content:
 custom_api.content:
   path: '/api/v1/app_submit'
   defaults:
-    _controller: '\Drupal\custom_api\Controller\CustomApiController::app_submit'
+    _controller: '\Drupal\custom_api\Controller\CustomApiController::appSubmit'
     _title: 'Create Front App Node'
   requirements:
     _permission: 'access content'

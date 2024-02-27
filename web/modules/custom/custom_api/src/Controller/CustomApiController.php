@@ -91,7 +91,7 @@ class CustomApiController extends ControllerBase {
   /**
   * Callback function to create a node.
   */
-  function app_submit(Request $request) {
+  function appSubmit(Request $request) {
     // Get JSON data from the request body.
     $data = json_decode($request->getContent(), TRUE);
     
@@ -123,7 +123,8 @@ class CustomApiController extends ControllerBase {
       $fileEntity = $entityTypeManager->getStorage('file')->load($file->id());
 
     }
-    // echo $fileEntity->id()."===========";
+     echo $fileEntity->id()."===========";
+     die;
     // kint($fileEntity);
     
 
