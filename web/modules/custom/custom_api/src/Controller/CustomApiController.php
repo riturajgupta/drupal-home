@@ -97,13 +97,14 @@ class CustomApiController extends ControllerBase {
     $data = json_decode($request->getContent(), TRUE);
     
     if (empty($data['title'])) {
-      //return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
+      return new JsonResponse(['error' => 'title is required in the request body to create the node.'], 400);
     }
     // Load necessary Drupal services.
     $entityTypeManager = \Drupal::entityTypeManager();
     $fileSystem = \Drupal::service('file_system');
 
-    $imageUrl = 'https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-mountain-scenery-with-flowers-free-photo.jpg';
+    //$imageUrl = 'https://i0.wp.com/picjumbo.com/wp-content/uploads/beautiful-nature-mountain-scenery-with-flowers-free-photo.jpg';
+    $imageUrl = $data['image'];
     // Create a new file object
     // Create a file name for the downloaded image.
     $fileName = basename($imageUrl);
@@ -120,11 +121,8 @@ class CustomApiController extends ControllerBase {
       $fileContents = file_get_contents($temporaryFilepath);
       //$file = file_save_data($fileContents, 'public://' . $fileName, FILE_EXISTS_REPLACE);
       $file = \Drupal::service('file.repository')->writeData($fileContents, 'public://'.$fileName);
-
       $fileEntity = $entityTypeManager->getStorage('file')->load($file->id());
-
     }
-     echo $fileEntity->id()."===========";
      
     // Load or create the media entity.
     $media = Media::create([
@@ -141,7 +139,7 @@ class CustomApiController extends ControllerBase {
    
     $term = Term::create([
       //'name' => $data['tags'],
-      'name' => 'term11', 
+      'name' => $data['tags'], 
       'vid' => 'front_apps',
     ]);
     $term->save(); 
@@ -149,14 +147,18 @@ class CustomApiController extends ControllerBase {
     // Create a node entity.
     $node = Node::create([
       'type' => 'front_apps', // create a node of 'front apps' content type.
-      'title' => 'title11',
-      'body' => 'this is demo 11',
+      'title' => $data['title'],
+      'body' => $data['body'],
+      'field_domain' => $data['domain'],
+      'field_enable' => $data['enable'],
+      'field_unique_code' => $data['unique_code'],
       'uid' => 9
       // Add more fields as needed.
     ]);
     $node->field_media_image->target_id = $media->id();
     $node->field_tags->target_id = $term->id();
-
+    kint($node);
+    die('---');
     $node->save();
 
     // Clean up temporary file.
