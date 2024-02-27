@@ -111,7 +111,8 @@ class CustomApiController extends ControllerBase {
     $termStorage = $entityTypeManager->getStorage('taxonomy_term')
                                     ->loadByProperties(['vid' => 'front_apps', 'name' => 'term11']);
     if(!empty($termStorage)) {
-      echo $termStorage->id();
+      $term = reset($termStorage);
+      echo $term->id();
     }
     die('-----------------');
 
