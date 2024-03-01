@@ -43,7 +43,8 @@
         "mnsami/composer-custom-directory-installer": "*" ,
         "drupal/video" : "^3.0",
         "drupal/core-project-message": "^10",
-        "drupal/devel": "^5.0"
+        "drupal/devel": "^5.0",
+        "drupal/allow_iframed_site": "^3.0"
     },
     "conflict": {
         "drupal/drupal": "*"
