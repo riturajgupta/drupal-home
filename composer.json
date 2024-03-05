@@ -44,7 +44,8 @@
         "drupal/video" : "^3.0",
         "drupal/core-project-message": "^10",
         "drupal/devel": "^5.0",
-        "drupal/allow_iframed_site": "^3.0"
+        "drupal/allow_iframed_site": "^3.0",
+        "drupal/js_component": "^2.0@alpha"
     },
     "conflict": {
         "drupal/drupal": "*"
