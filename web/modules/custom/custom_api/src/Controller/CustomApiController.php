@@ -14,6 +14,7 @@ use Drupal\media\Entity\Media;
 use Drupal\Core\Access\CsrfTokenGenerator;
 use Drupal\simple_oauth\Service\TokenManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException;
 
 class CustomApiController extends ControllerBase {
   protected $entityTypeManager;
